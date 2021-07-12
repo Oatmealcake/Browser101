@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {background-color: #000; text-align: center;}
+      img {display: block; margin: 10px auto;}
+      button {border: none; cursor: pointer;}
+      .toRabbit {background-color: tomato; font-size: 24px; color: #fff; margin: 30px 0;}
+      .btns {position: fixed; bottom: 30px; right: 30px;}
+      .btns button {display: block; width: 100%; margin: 10px 0; padding: 5px 10px; font-size: 16px; background-color: rgba(255, 255, 255, 0.9);}
+    </style>
+  </head>
+  <body>
+    <button type="button" class="toRabbit">find a rabit 🐇</button>
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img class="rabbit" src="./img/rabbit.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <img src="./img/carrot.png" alt="">
+    <div class="btns">
+      <button class="scrollTo" type="button">scrollTo 100px</button>
+      <button class="scrollBy" type="button">scrollBy 100px</button>
+      <button class="scrollInto" type="button">scrollInto Rabbits</button>
+    </div>
+    <script>
+      const body = document.querySelector('body');
+      const rabbit = document.querySelector('.rabbit');
+      const btn = document.querySelector('.toRabbit');
+      const btnTo = document.querySelector('.scrollTo');
+      const btnBy = document.querySelector('.scrollBy');
+      const btnInto = document.querySelector('.scrollInto');
+      window.addEventListener('load', () => {
+        btn.addEventListener('click', () => {
+          rabbit.scrollIntoView({behabior: 'smooth', block: 'center'});
+        })
+      })
+      btnTo.addEventListener('click', () => {
+        window.scrollTo(0, 100);
+      })
+      btnBy.addEventListener('click', () => {
+        window.scrollBy(0, 100);
+      })
+      btnInto.addEventListener('click', () => {
+        rabbit.scrollIntoView();
+      })
+    </script>
+  </body>
+</html>
