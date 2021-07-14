@@ -72,5 +72,12 @@
     // <h1>입력된 테스트 문장입니다.</h1>
     ```
 
+## Day 3
+- **Shopping List 만들기**
+  - `removeChild()` 오류 발생
+  <br>Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+  <br>정상 작동하나 콘솔창에 위와 같은 오류가 출력되었다. 삭제하는 기능을 만들 때 목록이 추가될때마다 btn_del과 li를 읽어와 클릭된 것의 인덱스를 찾아 삭제하려고 했다. 이 때 remove는 정상작동하는 것으로 보아 삭제한 노드를 반환하는 과정에서 오류를 일으킨 것이 아닐까 추측했지만, 반환작업도 이상이 없었다. fontawsome과의 충돌때문이라는 사람도 있지만 내 경우는 아닌 것 같고, 이부분에 관해서는 추후 자세히 알아 볼 필요가 있을 것 같다.
+
 ## Task lists
 - [ ] 렌더링과정의 이해
+- [ ] removeChild, remove
