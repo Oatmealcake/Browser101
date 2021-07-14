@@ -27,7 +27,7 @@ function delItem() {
   let lis = shopList.querySelectorAll('li');
   for (let i = 0; i < lis.length; i++) {
     delBtn[i].addEventListener('click', () => {
-      shopList.removeChild(lis[i])
+      lis[i].remove();
     })
   }
 }
