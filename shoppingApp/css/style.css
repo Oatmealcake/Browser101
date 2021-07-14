@@ -4,10 +4,13 @@ html, body, div, h1, ul {margin: 0; padding: 0;}
 html, body {font-family: 'Nanum Gothic', sans-serif;}
 button {border: none; background-color: transparent; font-size: inherit; cursor: pointer;}
 ul {list-style: none;}
-.shop_box {position: relative; width: 400px; height: 700px; margin: 50px auto; background-color: #f7f7f7; border-radius: 25px; overflow: hidden; box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.3);}
+.shop_box {width: 400px; margin: 50px auto; background-color: #f7f7f7; border-radius: 25px; overflow: hidden; box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.3);}
 .shop_h {padding: 10px 0; background: linear-gradient(to bottom right, pink, skyblue); text-align: center; font-family: 'Roboto Slab', serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; color: #fff;}
-.shop_list {padding: 20px 30px;}
-.shop_list li {line-height: 2; display: flex; flex-direction: row; justify-content: space-between;}
-.shop_f {position: absolute; bottom: 0; width: 100%; background: linear-gradient(to bottom right, pink, skyblue); text-align: center;}
+.shop_list {height: 500px; padding: 20px 30px; line-height: 2; overflow-y: auto;}
+.shop_list .item {display: flex; flex-direction: row; justify-content: space-between;}
+.shop_list .btn_del {transition: all 0.3s ease-in;}
+.shop_list .btn_del:hover {color: red; transform: scale((1.1));}
+.shop_f {width: 100%; background: linear-gradient(to bottom right, pink, skyblue); text-align: center;}
 .text_input {width: 100%; border: none; box-sizing: border-box; padding: 0px 30px; font-size: inherit; line-height: 2.5;}
-.btn_add {width: 45px; height: 45px; margin: 10px; font-size: 24px; background-color: #000; color: #fff; border-radius: 50%;}
+.btn_add {width: 45px; height: 45px; margin: 10px; font-size: 24px; background-color: #000; color: #fff; border-radius: 50%; transition: all 0.3s ease-in;}
+.btn_add:hover {transform: scale(1.1);}
