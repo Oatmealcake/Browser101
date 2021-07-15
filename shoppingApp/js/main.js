@@ -24,25 +24,23 @@ function addItem() {
   input.value = '';
   input.focus();
 }
+let id = 0; // 고유 id 지정
 function createItem(text) {
   const li = document.createElement('li');
-
-  const item = document.createElement('div');
-  item.setAttribute('class', 'item');
-
-  const name = document.createElement('span');
-  name.setAttribute('class', 'item_name');
-  name.innerText = text;
-
-  const delBtn = document.createElement('button');
-  delBtn.setAttribute('class', 'btn_del');
-  delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-  delBtn.addEventListener('click', () => {
-    shopList.removeChild(li);
-  })
-
-  item.appendChild(name);
-  item.appendChild(delBtn);
-  li.appendChild(item);
+  li.setAttribute('data-id', id)
+  li.innerHTML = `
+    <div class="item">
+      <span class="item_name">${text}</span>
+      <button class="btn_del"><i class="fas fa-trash-alt" data-id=${id}></i></button>
+    </div>`;
+  id++;
   return li;
 }
+
+shopList.addEventListener('click', ev => {
+  const id = ev.target.dataset.id
+  if (id) {
+    const toBeDeleted = document.querySelector(`li[data-id='${id}']`);
+    toBeDeleted.remove();
+  }
+})
