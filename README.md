@@ -22,7 +22,7 @@
     - innerHTML
     <br>요소 내에 포함된 마크업을 출력
     <br>입력시 모든 자손이 제거되고, 지정된 HTML을 파싱 후 생성된 노드로 대체
-    <br>보안 문제가 있어 일반 텍스트를 삽입할 경우에는 사용하지 않는것이 좋다.
+    <br>사용자에게 입력을 받아온 데이터를 innerHTML로 설정할 경우 보안 문제가 있어 input등으로 입력받을 경우엔 textContent를 사용해야한다.
     - innerText
     <br>렌더링된 텍스트 콘텐츠 출력. 스타일링이 적용된 모습이며 사람이 읽을 수 있는 요소만 처리
     <br>입력시에도 스타일링이 적용
@@ -77,6 +77,23 @@
   - `removeChild()` 오류 발생
   <br>Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
   <br>정상 작동하나 콘솔창에 위와 같은 오류가 출력되었다. 삭제하는 기능을 만들 때 목록이 추가될때마다 btn_del과 li를 읽어와 클릭된 것의 인덱스를 찾아 삭제하려고 했다. 이 때 remove는 정상작동하는 것으로 보아 삭제한 노드를 반환하는 과정에서 오류를 일으킨 것이 아닐까 추측했지만, 반환작업도 이상이 없었다. fontawsome과의 충돌때문이라는 사람도 있지만 내 경우는 아닌 것 같고, 이부분에 관해서는 추후 자세히 알아 볼 필요가 있을 것 같다.
+
+## Day 4
+- **Event**
+  - `$0.dispatchEvent(new Event('click'));`
+  <br>인공적으로 클릭 이벤트를 전달해 동작시킬 수 있다
+  - 이벤트 발생시 콜백함수 작동
+  ```js
+  const listener = () => {console.log('clicked')};
+  $0.addEventListener('click', listener);
+  ```
+  - 버블링과 캡처링
+  <br>반복되어지는 이벤트는 버블링을 적극 활용!(각각의 li보다 ul에 적용)
+  - 전파 방지
+  <br>stopImmediatePropagation, stopPropagation은 다른 필수적인 이벤트를 종료시킬 가능성이 있어 위험 ➝ event.target, event.currentTarget을 비교하며 제어
+  - 쇼핑리스트 수정
+  <br>이벤트 위임 활용
+  <br>data-id를 이용해 li와 del_btn에 고유 넘버를 지정 후 이것을 이용해 삭제
 
 ## Task lists
 - [ ] 렌더링과정의 이해
