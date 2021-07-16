@@ -83,10 +83,11 @@
   - `$0.dispatchEvent(new Event('click'));`
   <br>인공적으로 클릭 이벤트를 전달해 동작시킬 수 있다
   - 이벤트 발생시 콜백함수 작동
-  ```js
-  const listener = () => {console.log('clicked')};
-  $0.addEventListener('click', listener);
-  ```
+
+    ```js
+    const listener = () => {console.log('clicked')};
+    $0.addEventListener('click', listener);
+    ```
   - 버블링과 캡처링
   <br>반복되어지는 이벤트는 버블링을 적극 활용!(각각의 li보다 ul에 적용)
   - 전파 방지
@@ -94,6 +95,160 @@
   - 쇼핑리스트 수정
   <br>이벤트 위임 활용
   <br>data-id를 이용해 li와 del_btn에 고유 넘버를 지정 후 이것을 이용해 삭제
+
+## Day 5
+- **&&연산자**
+
+  ```js
+  let obj = {
+    name: 'ellie'
+  };
+
+  if (obj) {
+    console.log(obj.name);
+  }
+  obj && console.log(obj.name);
+  // 위의 if문과 같게 사용할 수 있음
+  // obj의 값이 존재해야 obj.name에 접근 (undefined일경우 접근 불가)
+  ```
+- **Class와 Object**
+  - Class
+  <br>객체를 생성하기 위한 템플릿
+  <br>연관있는 데이터(fields)와 행동(methods)이 종합적으로 묶여있는 것
+  - Object
+  <br>클래스의 인스턴스
+
+    ```js
+    // class 선언
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      speak() {
+        console.log(`${this.name}: hello!`);
+      }
+    }
+    // object 생성
+    const ellie = new Person('ellie', 20);
+    console.log(ellie.name); // ellie
+    console.log(ellie.age); // 20
+    ellie.speak(); // ellie: hello!
+    ```
+  - Getter & Setter
+    ```js
+    class User {
+      constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+      }
+
+      get age() {
+        // getter은 age를 읽으려 할 때 실행
+        return this._age;
+      }
+      get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+      }
+
+      set age(value) {
+        // setter은 age에 값을 할당하려고 할 때 호출되는 함수
+        this._age = value < 0 ? 0 : value; // 이런 식으로 사용자의 실수를 걸러줄 수 있다
+        // 한 프로퍼티에 get과 value를 동시에 설정하면 오류가 발생한다
+      }
+      set fullName(value) {
+        [this.firstName, this.lastName] = value.split(' ');
+      }
+    }
+
+    const user1 = new User('steve', 'Job', -1);
+    console.log(user1.age); // 0
+    console.log(user1.fullName); // steve Job
+    user1.fullName = 'Alice Cooper'; // 할당 시 setter가 없으면 오류를 발생
+    console.log(user1.firstName); // Alice
+    console.log(user1.lastName); // Cooper
+    console.log(user1); // User {firstName: "Alice", lastName: "Cooper", _age: 0}
+    // geter와 setter 구현을 통해 만들어진 fullName은 가상 프로퍼티
+    // 읽고 쓸 수 는 있지만 객체에 존재하지 않는다.
+    ```
+  - public & private
+    ```js
+    class Experiment {
+      // 생성자 없이 필드 정의 가능
+      publicField = 2; // 외부 접근 가능
+      #privateField = 0; // #을 붙이면 클래스 내부에서만 접근 가능
+    }
+    const experiment = new Experiment();
+    console.log(experiment.publicField); // 2
+    console.log(experiment.privateField); // undefined
+    ```
+  - static
+    ```js
+    class Article {
+      // 인스턴스와 상관없이 클래스와 연결되어있는 값
+      static publisher = 'Dream Coding';
+      constructor(articleNumber) {
+        this.articleNumber = articleNumber;
+      }
+      static printPublisher() {
+        console.log(Article.publisher);
+      }
+    }
+
+    const article1 = new Article(1);
+    const article2 = new Article(2);
+    console.log(article1.publisher); // undefined // 인스턴스에서는 호출 불가
+    console.log(Article.publisher); // Dream Coding
+    Article.printPublisher(); // Dream Coding
+    // 오브젝트와 상관없이 공통적으로 클래스에서 쓸 수 있는 것이라면,
+    // static을 사용하는 것이 메모리의 사용을 줄일 수 있다.
+    ```
+  - 상속과 다양성
+    ```js
+    class Shape {
+      constructor(width, height, color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+      }
+
+      draw() {
+        console.log(`drawing ${this.color} color of`);
+      }
+      getArea () {
+        return this.width * this.height;
+      }
+    }
+
+    class Rectangle extends Shape {}
+    class Triangle extends Shape {
+      draw() {
+        super.draw(); // 부모의 메소드 호출
+        console.log('💓');
+      }
+      // 필요한 함수만 재정의 가능
+      getArea () {
+        return (this.width * this.height) / 2;
+      }
+    }
+
+    const rectangle = new Rectangle(20, 20, 'blue');
+    rectangle.draw(); // drawing blue color of
+    console.log(rectangle.getArea()); // 400
+    const triangle = new Triangle(20, 20, 'red');
+    triangle.draw(); // 200 // 💓
+    console.log(triangle.getArea());
+    ```
+  - instance0f
+  <br>object가 class의 object인지 확인
+    ```js
+    console.log(triangle instanceof Triangle);
+    console.log(triangle instanceof Rectangle);
+    console.log(triangle instanceof Shape); // Triangle이 shpae를 상속
+    console.log(triangle instanceof Object); // 모든 object는 Object를 상속
+    ```
 
 ## Task lists
 - [ ] 렌더링과정의 이해
