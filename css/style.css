@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+html, body {margin: 0; padding: 0;}
+button {cursor: pointer;}
+.carrot_game {display: flex; flex-direction: column; align-items: center; width: 100%; height: 100vh; font-size: 24px; background: url('../img/background.png') no-repeat center center; background-size: auto 100%;}
+.game_header {display: flex; flex-direction: column; align-items: center; padding: 40px;}
+.game_control, .game_timer, .game_count {margin-top: 10px; border: 2px solid #000;}
+.game_control {width: 50px; height: 50px; background-color: tan; border-radius: 4px; font-size: inherit;}
+.game_control .fa-pause {display: none;}
+.game_timer {padding: 0 40px; background-color: #fff; border-radius: 4px;}
+.game_count {display: block; text-align: center; width: 50px; height: 50px; font-size: 40px; line-height: 45px; background-color: salmon; border-radius: 50%; color: #fff;}
+.game_area {width: inherit; height: 100%; margin-top: 60px;}
+.game_result {display: none; position: absolute; left: 50%; transform: translate(-50%, -190%); width: 400px; height: 135px; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; text-align: center;}
+.replay {width: 50px; height: 50px; margin-top: 15px; border: 2px solid #000; border-radius: 4px; font-size: 24px;}
+.result {display: block; font-size: 36px; color: #fff;}
+.game_result.on {display: block;}
