@@ -1,5 +1,12 @@
 # Browser101
 
+
+## Carrot Game
+![플레이화면](https://user-images.githubusercontent.com/78004140/126106866-81c069d5-3174-4c98-8b22-37d8dd8ebd6f.png)
+[게임 플레이](https://oatmealcake.github.io/Browser101/)
+<br>제한 시간 내에 벌레를 피해 당근을 모두 뽑아야 이기는 게임입니다.
+<br>1920 * 980 화면에 최적화되어있습니다.
+
 ## Day 1
 - **Web APIs - Scroll, MouseEvent**
 - **EventTarget ← Node ← Element**
@@ -249,6 +256,7 @@
     console.log(triangle instanceof Shape); // Triangle이 shpae를 상속
     console.log(triangle instanceof Object); // 모든 object는 Object를 상속
     ```
+
 
 ## Task lists
 - [ ] 렌더링과정의 이해
