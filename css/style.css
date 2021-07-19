@@ -6,7 +6,10 @@ button {cursor: pointer;}
 .game_header {display: flex; flex-direction: column; align-items: center; padding: 40px;}
 .game_control, .game_timer, .game_count {margin-top: 10px; border: 2px solid #000;}
 .game_control {width: 50px; height: 50px; background-color: tan; border-radius: 4px; font-size: inherit;}
+.game_control .fa-play {display: block;}
 .game_control .fa-pause {display: none;}
+.game_control.on .fa-play {display: none;}
+.game_control.on .fa-pause {display: block;}
 .game_timer {padding: 0 40px; background-color: #fff; border-radius: 4px;}
 .game_count {display: block; text-align: center; width: 50px; height: 50px; font-size: 40px; line-height: 45px; background-color: salmon; border-radius: 50%; color: #fff;}
 .game_area {position: relative; width: inherit; height: 100%; margin-top: 60px;}
