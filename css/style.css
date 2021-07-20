@@ -10,10 +10,12 @@ button {cursor: pointer;}
 .game_control .fa-pause {display: none;}
 .game_control.on .fa-play {display: none;}
 .game_control.on .fa-pause {display: block;}
-.game_timer {padding: 0 40px; background-color: #fff; border-radius: 4px;}
-.game_count {display: block; text-align: center; width: 50px; height: 50px; font-size: 40px; line-height: 45px; background-color: salmon; border-radius: 50%; color: #fff;}
+.game_timer {padding: 0 40px; background-color: #fff; border-radius: 4px; user-select: none; cursor: auto;}
+.game_count {display: block; text-align: center; width: 50px; height: 50px; font-size: 40px; line-height: 45px; background-color: salmon; border-radius: 50%; color: #fff; user-select: none; cursor: auto;}
 .game_area {position: relative; width: inherit; height: 100%; margin-top: 200px;}
 .game_result {display: none; position: absolute; left: 50%; transform: translate(-50%, -250%); width: 400px; height: 135px; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; text-align: center;}
 .replay {width: 50px; height: 50px; margin-top: 15px; border: 2px solid #000; border-radius: 4px; font-size: 24px;}
 .result {display: block; font-size: 36px; color: #fff;}
 .game_result.on {display: block;}
+.carrot, .bug {transition: transform 0.1s ease-in;}
+.carrot:hover, .bug:hover {transform: scale(1.1);}
